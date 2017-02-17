@@ -20,10 +20,17 @@ class tweet {
     ##### TODO : 
     #   Understand the Temporal Change - How frequent are the tweets – tweet frequency as a function of time
     #####
-    def Q1():
-      #  x days
-      #  y number of tweets (collaborate) 
- 
+    def Q1(token, api):
+      my_dict = {}
+      tweets = api.search(q=token)      
+      for tweet in tweets:
+        # Create a key value pair 
+        # key date
+        # Count  
+        my_dict[tweet.created_at] = 1
+        print(my_dict);
+      return my_dict
+
     ##### TODO : 
     #   What are the commonly used words – how does their frequency change over the period of time
     #####  
@@ -55,10 +62,8 @@ class tweet {
       auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
       auth.set_access_token(access_token, access_secret)
       api = tweepy.API(auth)
-      for key in tokens:
-        public_tweets= api.search(key)
-        for tweet in public_tweets:
-          print(tweet.text)
-          analysis= TextBlob(tweet.text)
-          print(analysis.sentiment) 
+      
+      ### Q1 Soln
+      Ans = Q1("demonitization",api)
+       
 }
