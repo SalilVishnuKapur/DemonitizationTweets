@@ -1,0 +1,336 @@
+{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}
+
+import json
+from pprint import pprint
+
+with open('demonetisation_2017-02-22.json') as data_file:    
+    data = json.load(data_file)
+    pprint(data)
+
+import json
+import codecs
+from pprint import pprint
+data = []
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as f:
+    for line in f:
+       print(line)
+       break
+       temp = json.loads(line)
+       if(("location" in temp) or ( "created_at" in temp) or ("text" in temp) ):
+         data.append(temp)  
+    OutputFile = open("data.txt", 'w')
+    for item in data:
+       OutputFile.write("%s\n" % item)
+
+import codecs
+from xmlrpc import xmlrpclib
+from xml.dom.minidom import parseString
+import json        
+def bar(somejson, key):
+    def val(node):
+        # Searches for the next Element Node containing Value
+        e = node.nextSibling
+        while e and e.nodeType != e.ELEMENT_NODE:
+            e = e.nextSibling
+        return (e.getElementsByTagName('string')[0].firstChild.nodeValue if e 
+                else None)
+    # parse the JSON as XML
+    foo_dom = parseString(xmlrpclib.dumps((json.loads(somejson),)))
+    # and then search all the name tags which are P1's
+    # and use the val user function to get the value
+    return [val(node) for node in foo_dom.getElementsByTagName('name') 
+            if node.firstChild.nodeValue in key]
+
+
+for line in BrowserInfo.splitlines():
+    k,v = line.split(': ', 1)
+
+
+data = []
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+         splitData = line.split(',')
+         for part in splitData:  
+             if ':' in part:
+                 k,v = part.split(':',1)
+             print(k)
+         break   
+             k,v = part.split(':',1)
+             if( ("location" in k) or ( "created_at" in k) or ("text" in k) ):
+               data.append(k+" : "+v)     
+             print(data)           
+
+    
+bar(somejson, ("location","created_at" ,"text"))
+[u'cccc', u'aaa', u'ss']
+bar(foo, ('P1','P2'))
+[u'cccc', u'cccc', u'aaa', u'ss']
+
+
+import codecs
+data = []
+OutputFile = open("data.txt", 'w')
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+         splitData = line.split(',')
+         for part in splitData:  
+             if ((':' in part) ):
+                   k,v = part.split(':',1)
+                   if(("location" in k) or ( "created_at" in k) or ("text" in k) or ( "name" in k) or ( "followers_count" in k)) :
+                       OutputFile.write(k +":"+ v + "\n")
+         OutputFile.write("*********************************************************************************"+"\n")   
+
+
+Q1 
+
+
+
+def f2(seq): 
+   # order preserving
+   checked = []
+   for e in seq:
+       if e not in checked:
+           checked.append(e)
+   return checked
+
+
+Q1 :-
+import matplotlib.pyplot as plt
+import plotly.plotly as py
+import codecs
+import plotly
+plotly.tools.set_credentials_file(username='SalilVishnuKapur', api_key='UNYGmjttUcQxCqCUQv3Y')
+data = []
+kv = {}
+kvAdv = {}
+graphY=[]
+OutputFile = open("data.txt", 'w')
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+         splitData = line.split(',')
+         for part in splitData:  
+             if ((':' in part) ):
+                   k,v = part.split(':',1)
+                   part=v.split(' ')  
+                   if(( "created_at" in k)) :
+                       data.append(part[2]+" "+part[3]+",1")
+    
+    for part in data:
+         key= part.split(',')[0]
+         if key not in kv:
+            kv[key] = []
+         kv[key].append(1)
+      
+    for key,value in kv.items():
+        kvAdv[key] = []
+        kvAdv[key].append(sum(value))
+    
+    for key,value in kvAdv.items():
+        graphY.append(value[0])
+ 
+    N = len(graphY)
+    x = range(N)
+    
+    width = 1/1.5
+
+plt.bar(x, graphY, width, color="blue")
+
+fig = plt.gcf()
+plot_url = py.plot_mpl(fig, filename='mpl-basic-bar')
+
+
+Q3 :-
+import matplotlib.pyplot as plt
+import plotly.plotly as py
+import codecs
+import plotly
+plotly.tools.set_credentials_file(username='SalilVishnuKapur', api_key='UNYGmjttUcQxCqCUQv3Y')
+data = []
+kv = {}
+kvAdv = {}
+graphY=[]
+clubber= ""
+name = ""
+followers = ""
+retweet = "" 
+OutputFile = open("data.txt", 'w')
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+         splitData = line.split(',')
+         for part in splitData:  
+             if ((':' in part) ):
+                k,v = part.split(':',1)
+                k = k.replace(" ","").replace('"',"")
+                v = v.replace(" ","").replace('"',"")
+                if k == "name" :
+                  name = v
+                elif k == "followers_count" :
+                  followers = int(v)
+         kv[name] = followers
+    result = sorted(kv.items(), key=lambda x: (x[1], x[0]))
+    f = open('data.txt', "w")
+    f.write("\n".join(map(lambda x: str(x), result)))
+    f.close()
+
+
+    with open('data.txt', 'wb') as f:
+       pickle.dump(result, f)
+    with open('data.txt','w') as file:
+       for item in result:
+        print>>file, item
+       file.close()  
+     for i in result:
+      OutputFile.write(i, '\n')
+print(result)
+    kv.sort(key=operator.itemgetter('name')) 
+   for key,value in kv.items():
+         
+         splitPart= part.split('----')
+         for key in splitPart:
+           if ((':' in key) ):
+             k,v = key.split(':')
+             if k == "name" :
+               name = v
+             elif k == "followers_count" :
+               followers = v
+         kv[name] = []
+         kv[name].append(followers)
+    print(kv)  
+    for key,value in kv.items():
+        kvAdv[key] = []
+        kvAdv[key].append(sum(value))
+    
+    for key,value in kvAdv.items():
+        graphY.append(value[0])
+ 
+    N = len(graphY)
+    x = range(N)
+    
+    width = 1/1.5
+
+plt.bar(x, graphY, width, color="blue")
+
+fig = plt.gcf()
+plot_url = py.plot_mpl(fig, filename='mpl-basic-bar')
+
+
+Q4 :-
+
+import matplotlib.pyplot as plt
+import plotly.plotly as py
+import codecs
+import plotly
+plotly.tools.set_credentials_file(username='SalilVishnuKapur', api_key='UNYGmjttUcQxCqCUQv3Y')
+data = []
+kv = {}
+kvAdv = {}
+graphY=[]
+clubber= ""
+name = ""
+followers = ""
+retweet = "" 
+TimesofIndia ArunJaitley TIMESNOW ABPNews RajdeepSardesai HindustanTimes IndiaToday News18 ZeeNews TheIndianExpress EconomicTimes Firstpost ANI
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+         splitData = line.split(',')
+         for part in splitData:  
+             if ((':' in part) ):
+                k,v = part.split(':',1)
+                k = k.replace(" ","").replace('"',"")
+                if k == "name" :
+                  name = v
+                elif k == "followers_count" :
+                  followers = v
+                elif k == "retweet_count" :
+                  retweet = v
+         kv[name] = []
+         kv[name].append(followers+'--'+retweet)
+    print(kv)     
+
+# Learn about API authentication here: https://plot.ly/python/getting-started
+# Find your api_key here: https://plot.ly/settings/api
+
+y = [3, 10, 7, 5, 3, 4.5, 6, 8.1]
+N = len(y)
+x = range(N)
+width = 1/1.5
+plt.bar(x, y, width, color="blue")
+
+
+fig = plt.gcf()
+plot_url = py.plot_mpl(fig, filename='mpl-basic-bar')
+    print(kv)
+
+Q5 :-
+
+import matplotlib.pyplot as plt
+import plotly.plotly as py
+import codecs
+import plotly
+plotly.tools.set_credentials_file(username='SalilVishnuKapur', api_key='UNYGmjttUcQxCqCUQv3Y')
+data = []
+kv = {}
+kvAdv = {}
+graphY=[]
+clubber= ""
+name = ""
+followers = ""
+retweet = "" 
+text = ""
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+         splitData = line.split(',')
+         for part in splitData:  
+             if ((':' in part) ):
+                k,v = part.split(':',1)
+                k = k.replace(" ","").replace('"',"")
+                if k == "location" :
+                  name = v
+                elif k == "text" :
+                  text = v
+         kv[name] = []
+         kv[name].append(text)
+    print(kv)     
+
+
+
+    for dat in data:
+         print(dat)
+
+
+names = ['mark', 'henry', 'matthew', 'paul',
+         'luke', 'robert', 'joseph', 'carl', 'michael']
+
+d = {}
+for name in names:
+    key = len(name)
+    if key not in d:
+        d[key] = []
+    d[key].append(name)
+
+# result: d = {4: ['mark', 'paul', 'luke', 'carl'], 
+#              5: ['henry'], 6: ['robert', 'joseph'], 7: ['matthew', 'michael']}
+          
+    print(newData)
+    OutputFile.write("".join(data)) 
