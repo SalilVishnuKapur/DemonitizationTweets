@@ -35,6 +35,33 @@ with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
     plt.xlim(xmin=0)
     plt.show()
 
+Q2 :- Think about smart solution :)
+
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+import plotly.plotly as py
+import codecs
+import plotly
+plotly.tools.set_credentials_file(username='SalilVishnuKapur', api_key='UNYGmjttUcQxCqCUQv3Y')
+data = []
+kv = {}
+kvAdv = {}
+wordCloud = {'Real Estate' : 0 , 'home loans' : 0, 'auto industry' : 0, 'tourism' :0 , 'stock market' :0, 'wedding' :0, 'Jobs' :0, 'Black money' :0, 'Migrant Workers' : 0, 'Labour' :0 , 'Cash' :0, 'money' :0, 'cashless' : 0, 'EMI rates' : 0, 'digital' : 0, 'PayTM' : 0, 'ATM' :0, 'Lending rates' : 0, 'RBI' : 0, 'digital' : 0, 'poor' : 0, 'rich' : 0, 'm-wallets' : 0, 'business' : 0, 'trade' : 0, 'market' : 0, 'loss' : 0 ,'gain' : 0, 'benefit' : 0, 'good' : 0, 'bad' : 0, 'politics' : 0, 'pro-poor' : 0, 'pro-rich' : 0, 'death' : 0, 'clean india' : 0, 'corruption' : 0, 'terrorism' : 0, 'counterfeit currency' : 0, 'fake notes' : 0, 'jan dhan' : 0, 'zero-balance accounts' : 0, 'implementation' :0}
+graphY=[]
+counter = 0
+OutputFile = open("data.txt", 'w')
+with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
+    for line in somejson:
+       ## Lot of if loops 
+       #if "Real Estate" in line :
+        counter+=1 
+    print(counter)
+
+# get the wordcloudwordcloud = WordCloud().generate_from_frequencies(wd.items())
+# Open a plot of the generated image.
+plt.imshow(wordcloud)
+plt.axis("off"); 
+
 Q3 :- Done(Just take top 100 from the result)
 
 import matplotlib.pyplot as plt
