@@ -52,15 +52,12 @@ counter = 0
 OutputFile = open("data.txt", 'w')
 with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
     for line in somejson:
-       ## Lot of if loops 
-       #if "Real Estate" in line :
-        counter+=1 
-    print(counter)
-
-# get the wordcloudwordcloud = WordCloud().generate_from_frequencies(wd.items())
-# Open a plot of the generated image.
+       for key,value in wordCloud.items():
+          wordCloud[key] += line.count(key)           
+    print(wordCloud)
+wordcloud = WordCloud().generate_from_frequencies(wordCloud.items())
 plt.imshow(wordcloud)
-plt.axis("off"); 
+plt.axis("off")
 
 Q3 :- Done(Just take top 100 from the result)
 
