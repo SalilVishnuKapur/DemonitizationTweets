@@ -145,7 +145,17 @@ with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
     plt.xlim(xmin=0)
     plt.show()
 
-Q5 :-
+Q5 :- 
+
+--> timezone, location, text, 
+
+zones = {'northZone' : 0, 'westZone' : 0, 'southZone' :0, 'eastZone' :0, 'centralZone' :0}
+northZone = ['punjab', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Punjab', 'Rajasthan', 'Uttarakhand', 'Uttar Pradesh', 'Chandigarh'
+, 'Delhi']
+westZone = ['Goa', 'Gujarat', 'Maharashtra', 'Dadra and Nagar Haveli', 'Daman and Diu']
+southZone = ['Telangana', 'Andhra Pradesh', 'Karnataka', 'Tamil Nadu', 'Kerala', 'Andaman and Nicobar', 'Lakshadweep', 'Puducherry']
+eastZone = ['Bihar' , 'Jharkhand', 'Odisha', 'West Bengal', 'Andaman and Nicobar Islands']
+centralZone = ['Chhattisgarh', 'Madhya Pradesh']
 
 import matplotlib.pyplot as plt
 import plotly.plotly as py
