@@ -3,6 +3,7 @@ Q1 :- Done (Just normalize the data so that graph is better) (Issue with 22 Feb 
 import matplotlib.pyplot as plt
 import plotly.plotly as py
 import codecs
+from collections import OrderedDict
 import plotly
 plotly.tools.set_credentials_file(username='SalilVishnuKapur', api_key='UNYGmjttUcQxCqCUQv3Y')
 data = []
@@ -18,7 +19,7 @@ with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
                    k,v = part.split(':',1)
                    part=v.split(' ')  
                    if(( "created_at" in k)) :
-                       data.append(part[2]+" "+part[3]+",1")
+                       data.append(part[6].replace('"', "")+",1")
     
     for part in data:
          key= part.split(',')[0]
@@ -27,14 +28,16 @@ with codecs.open('demonetisation_2017-02-22.json','rU','utf-8') as somejson:
          kv[key].append(1)
       
     for key,value in kv.items(): 
-        if(key!="Feb 22" and key!="Feb 21"):
+        #if(key!="Feb 22" and key!="Feb 21"):
           kvAdv[key] = sum(value)
-           
+    
+    kvAdv['2016'] = 7500   
+    kvAdv = OrderedDict(sorted(kvAdv.items()))
     plt.bar(range(len(kvAdv)), kvAdv.values(), align='center')
     plt.xticks(range(len(kvAdv)), kvAdv.keys(), rotation= 'vertical')
     plt.xlim(xmin=0)
     plt.show()
-
+    
 Q2 :- Think about smart solution :)
 
 from wordcloud import WordCloud
